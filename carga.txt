@@ -1,0 +1,2 @@
+copy usuarios(id,nombres,apellidos,tipodoc,numdoc,correo,tipo,contrasena,"imagenPerfil",idioma,prefijo,color) from 'C:\Users\VALERIA\Desktop\TRABAJOFINALPROGRA\BACKEND-TRABAJO-PROGRA\usuario.csv' DELIMITER ';' CSV HEADER;
+copy libros(id,titulo,autor,descripcion,editorial,"ISBN",categoria,"imagenLibro","cantidadEjemplares") from 'C:\Users\VALERIA\Desktop\TRABAJOFINALPROGRA\BACKEND-TRABAJO-PROGRA\libro.csv' DELIMITER ';' CSV HEADER;

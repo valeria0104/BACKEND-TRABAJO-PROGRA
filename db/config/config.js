@@ -10,6 +10,7 @@ module.exports = {
     "host": process.env.DB_HOST,
     "dialect": "postgres"
   },
+  
   "test": {
     "username": "root",
     "password": null,

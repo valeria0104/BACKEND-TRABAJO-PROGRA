@@ -22,6 +22,14 @@ ruta.post('/inserta', (req, res) => {
   });
 ///////////////////////////////
 
+ruta.post('/lectura', (req, res) => {
+  const formData = req.body; // Los datos enviados desde el frontend estarán en req.body
+  console.log('Datos recibidos:', formData);
 
+  // Aquí puedes realizar alguna lógica con los datos recibidos, como autenticación, guardar en la base de datos, etc.
+
+  // Por ejemplo, puedes enviar una respuesta al frontend
+  res.status(200).json({ message: 'Datos recibidos correctamente en el backend' });
+});
 
   module.exports = ruta

@@ -9,7 +9,7 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-     await queryInterface.createTable('reserva', {
+     await queryInterface.createTable('reservas', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -31,11 +31,20 @@ module.exports = {
           key: "id",
         },
       },
+      fecha_inicio: {
+        type: Sequelize.DATE
+      },
+      fecha_final: {
+        type: Sequelize.DATE
+      },
+
+
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue : new Date()
       },
+
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
@@ -44,6 +53,7 @@ module.exports = {
 
     });
   },
+
 
   async down (queryInterface, Sequelize) {
     /**

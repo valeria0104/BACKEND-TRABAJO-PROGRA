@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require("body-parser")
 const path = require('path');
 ////RUTA A NUESTRAS APIS////
-const usuarios= require('./api/usuarios/user')
+const usuarios= require('./api/user')
 
 ///ola
 const app = express()
@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname, './static')));
 app.use(bodyParser.json());
 
 ///(peticion: localhost:3080/api/users --> MI URL , direccionamiento: invocar a las rutas de user.js)
-app.use('/api/users', usuarios)
+app.use('/api/user', usuarios)
 ///////////////////////////////////////
 app.get('/', (req,res) => {
   res.sendFile(path.join(__dirname, './static/index.html'));

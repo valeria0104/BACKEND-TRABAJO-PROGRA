@@ -1,19 +1,20 @@
 const express = require('express');
-const bodyParser = require("body-parser")
+const bodyParser = require("body-parser");
 const path = require('path');
 ////RUTA A NUESTRAS APIS////
-const usuarios= require('./api/usuarios/user')
-
+const usuarios= require('./api/user');
+const busqueda = require('./api/busqueda');
 ///ola
-const app = express()
-const port = 3080
+const app = express();
+const port = 3080;
 
 ////MIDDLEWARE
 app.use(express.static(path.join(__dirname, './static')));
 app.use(bodyParser.json());
 
 ///(peticion: localhost:3080/api/users --> MI URL , direccionamiento: invocar a las rutas de user.js)
-app.use('/api/users', usuarios)
+app.use('/api/usuarios', usuarios);
+app.use('/api/busqueda', busqueda);
 ///////////////////////////////////////
 app.get('/', (req,res) => {
   res.sendFile(path.join(__dirname, './static/index.html'));

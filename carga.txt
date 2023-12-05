@@ -1,3 +1,3 @@
 copy usuarios(id,nombres,apellidos,tipodoc,numdoc,correo,tipo,contrasena,"imagenPerfil",idioma,prefijo,color) from 'C:\Users\VALERIA\Desktop\TRABAJOFINALPROGRA\BACKEND-TRABAJO-PROGRA\usuario.csv' DELIMITER ';' CSV HEADER;
 copy libros(id,titulo,autor,descripcion,editorial,"ISBN",categoria,"imagenLibro","cantidadEjemplares") from 'C:\Users\VALERIA\Desktop\TRABAJOFINALPROGRA\BACKEND-TRABAJO-PROGRA\libronuevo1.csv' DELIMITER ';' CSV HEADER;
-copy reservas(id,"idLibro","idUsuario",fecha_inicio,fecha_final) from 'C:\Users\VALERIA\Desktop\TRABAJOFINALPROGRA\BACKEND-TRABAJO-PROGRA\reserva.csv' DELIMITER ';' CSV HEADER;
+copy reservas(id,fechainicio,fechafinal,"idUsuario","idLibro") from 'C:\Users\VALERIA\Desktop\TRABAJOFINALPROGRA\BACKEND-TRABAJO-PROGRA\reservas1.csv' DELIMITER ';' CSV HEADER;

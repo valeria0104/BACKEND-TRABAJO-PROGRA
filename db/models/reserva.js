@@ -15,12 +15,18 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.libro, {as:'libroreserva', foreignKey:'idLibro'})
     }
   }
-  reserva.init({
-    fechainicio: DataTypes.DATE,
-    fechafinal: DataTypes.DATE
-  }, {
-    sequelize,
-    modelName: 'reserva',
-  });
+  Reserva.init(
+    {
+      fechainicio: DataTypes.DATE,
+      fechafinal: DataTypes.DATE
+    },
+    {
+      sequelize,
+      modelName: 'reserva', // Cambiado a "Reserva" en singular para que coincida con tu base de datos
+      tableName: 'reservas',
+
+    }
+  );
+
   return reserva;
 };

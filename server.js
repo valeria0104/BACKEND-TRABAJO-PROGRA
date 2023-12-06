@@ -5,6 +5,7 @@ const path = require('path');
 const usuarios= require('./api/user');
 const busqueda = require('./api/busqueda');
 const reservas= require('./api/reservas');
+const muestra= require('./api/muestra');
 
 ///ola
 const app = express();
@@ -18,6 +19,8 @@ app.use(bodyParser.json());
 app.use('/api/user', usuarios);
 app.use('/api/busqueda', busqueda);
 app.use('/api/reservas', reservas);
+app.use('/api/muestra', muestra);
+
 ///////////////////////////////////////
 
 app.get('/', (req,res) => {

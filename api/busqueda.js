@@ -28,7 +28,7 @@ router.get('/libros', async (req, res) => {
   try {
     // Cambia 'TrabajoFinalProgra' por el nombre de tu base de datos
     const libros = await db.libro.findAll({
-      attributes: ['id', 'titulo', 'autor', 'descripcion', 'editorial', 'isbn', 'categoria', 'imagenLibro', 'cantidadEjemplares'],
+      attributes: ['id', 'titulo', 'autor', 'descripcion', 'editorial', 'ISBN', 'categoria', 'imagenLibro', 'cantidadEjemplares'],
     });
 
     if (libros.length === 0) {
@@ -42,4 +42,6 @@ router.get('/libros', async (req, res) => {
   }
 });
 
+
 module.exports = router;
+

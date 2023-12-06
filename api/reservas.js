@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { reserva, libro } = require('../db/models'); // Cambiado desde '../db/models/index'
+const { reserva, libro, usuario } = require('../db/models'); // Cambiado desde '../db/models/index'
 
 router.get('/raw', async (req, res) => {
   try {
@@ -56,26 +56,29 @@ const verificarAutenticacion = (req, res, next) => {
   }
 };
 
-router.post('/reservarAhora', verificarAutenticacion, async (req, res) => {
-  const { idLibro, fechainicio, fechafinal } = req.body;
+router.post('/realizarReserva', async (req, res) => {
+  const { idUsuario, idLibro, fechainicio, fechafinal } = req.body;
 
   try {
-    // La información del usuario autenticado está disponible en req.user (suponiendo Passport.js)
-    const idUsuario = req.user.id; // Ajusta esto según la estructura de tu modelo de usuario
+    // Verificar si el libro existe
+    const libroDisponible = await libro.findByPk(idLibro);
 
-    // Crea la reserva en la base de datos
+    if (!libroDisponible) {
+      return res.status(400).json({ mensaje: 'El libro no existe o no está disponible para reserva.' });
+    }
+
+    // Crear la reserva
     const nuevaReserva = await reserva.create({
-      idLibro,
       idUsuario,
+      idLibro,
       fechainicio,
       fechafinal,
     });
 
-    // Devuelve la nueva reserva como respuesta
-    res.status(201).json(nuevaReserva);
+    res.status(200).json({ mensaje: 'Reserva realizada exitosamente.' });
   } catch (error) {
     console.error('Error al realizar la reserva:', error);
-    res.status(500).send('Error interno del servidor');
+    res.status(500).json({ error: 'Error interno del servidor' });
   }
 });
 

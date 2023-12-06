@@ -82,5 +82,24 @@ router.post('/realizarReserva', async (req, res) => {
   }
 });
 
+router.get('/libros-recientes', async (req, res) => {
+  try {
+    const reservas = await reserva.findAll({
+      include: [
+        { model: libro, as: 'libroreserva' },
+      ],
+      order: [['fechainicio', 'DESC']], // Ordenar por fecha de reserva de forma descendente
+      limit: 2, // Obtener solo las dos reservas más recientes
+    });
+
+    const librosRecientes = reservas.map((reserva) => reserva.libroreserva);
+
+    res.status(200).json(librosRecientes);
+  } catch (error) {
+    console.error('Error al obtener los libros recientes:', error);
+    res.status(500).json({ error: 'Error interno del servidor' });
+  }
+});
+
 
 module.exports = router;
